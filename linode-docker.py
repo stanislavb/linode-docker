@@ -98,7 +98,7 @@ def get_disk_id_list(linodeid):
     return [d['DISKID'] for d in disklist]
 
 
-def create_centos7_docker_disks(linodeid):
+def create_centos7_docker_disks(linodeid, sshkey):
     distributionid = get_centos7_distribution_id()
 
     rootdisk = api.linode.disk.createfromstackscript(
@@ -164,7 +164,7 @@ if __name__ == "__main__":
         linodeid = linode['LINODEID']
         disklist = get_disk_id_list(linodeid=linodeid)
         if len(disklist) == 0:
-            disklist = create_centos7_docker_disks(linodeid)
+            disklist = create_centos7_docker_disks(linodeid, sshkey)
             delete_all_configs(linodeid=linodeid)
 
         if len(api.linode.config.list(linodeid=linodeid)) == 0:
