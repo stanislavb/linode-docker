@@ -1,3 +1,5 @@
+## This project is made obsolete by Linode's new user-friendly API: https://developers.linode.com/guides/python-guide/
+
 # Linode Docker
 Use Linode API to provision a docker host on CentOS 7
 
